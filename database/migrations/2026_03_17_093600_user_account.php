@@ -14,13 +14,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('user_account', function (Blueprint $table) {
             $table->id();
             $table->string('user_code');
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Account::class);
             $table->foreignIdFor(Role::class);
-            $table->int('accept_closure')->default(false);
+            $table->boolean('accept_closure')->default(false);
             $table->timestamps();
         });
     }

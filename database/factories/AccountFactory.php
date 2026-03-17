@@ -19,7 +19,7 @@ class AccountFactory extends Factory
     public function definition(): array
     {
         return [
-            'type_id' => Type::factory(),
+            'type_id' => Type::inRandomOrder()->first()->id,
             'rib'=>'088'.'1234567891234567890'.'24', //088 19digits 24
             'solde'=>fake()->randomNumber(),
             'withdraw_limit'=>2,
