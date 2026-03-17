@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Account;
 use App\Models\Transfer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,7 +19,10 @@ class TransferFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'sender_account_id' => Account::factory(),
+            'receiver_account_id' => Account::factory(),
+            // 'sender_id' => User::factory(),
+            'amount' => fake()->randomFloat(),
         ];
     }
 }

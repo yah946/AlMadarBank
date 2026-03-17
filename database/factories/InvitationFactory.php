@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Account;
 use App\Models\Invitation;
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +21,10 @@ class InvitationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'sender_id' =>User::factory(),
+            'account_id'=>Account::factory(),
+            'email'=>fake()->email(),
+            'token'=>Str::random(60),
         ];
     }
 }

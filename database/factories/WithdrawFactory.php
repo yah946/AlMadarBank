@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Account;
+use App\Models\User;
 use App\Models\Withdraw;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,7 +20,9 @@ class WithdrawFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'account_id' => Account::factory(),
+            'user_id' => User::factory(),
+            'amount' => fake()->randomFloat(),
         ];
     }
 }
