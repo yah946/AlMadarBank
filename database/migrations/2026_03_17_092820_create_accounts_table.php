@@ -16,9 +16,9 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Type::class);
             $table->string('rib');
-            $table->float('solde')->default(0);
-            $table->float('withdraw_limit');
-            $table->float('price_limit');
+            $table->float('balance')->default(0);
+            $table->float('monthly_withdraw_limit');
+            $table->float('daily_transaction_limit');
             $table->timestamps();
         });
     }

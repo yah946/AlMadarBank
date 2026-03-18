@@ -16,7 +16,6 @@ return new class extends Migration
     {
         Schema::create('user_account', function (Blueprint $table) {
             $table->id();
-            $table->string('user_code');
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Account::class);
             $table->foreignIdFor(Role::class);
