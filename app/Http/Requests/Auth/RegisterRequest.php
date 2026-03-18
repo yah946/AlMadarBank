@@ -12,7 +12,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,13 +23,13 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name'=>'string|min:3|max:50',
-            'last_name'=>'string|min:3|max:50',
-            'username'=>'string|min:3|max:50|unique:users',
-            'cin'=>'string|min:5|max:10|unique:users',
-            'date_of_birth'=>'date',
-            'email'=>'string|email|unique:users,email|regex:/^[a-zA-Z0-9._%+-]{,50}@[a-zA-Z]+\.[a-zA-Z]{2,3}$/',
-            'password'=>'confirmed|string|regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[@$#]).{8,}$/'
+            'first_name'=>'required|string|min:3|max:50',
+            'last_name'=>'required|string|min:3|max:50',
+            'username'=>'required|string|min:3|max:50|unique:users,username',
+            'cin'=>'required|string|min:5|max:10|unique:users,cin',
+            'date_of_birth'=>'required|date',
+            'email'=>'required|string|email|unique:users,email|regex:/^[a-zA-Z0-9._%+-]{,50}@[a-zA-Z]+\.[a-zA-Z]{2,3}$/',
+            'password'=>'required|confirmed|string|regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[@$#]).{8,}$/'
         ];
     }
 }

@@ -21,6 +21,6 @@ class RegisterController extends BaseApiController
             'email'=>$request->email,
             'password'=>$request->password
         ]);
-        return $this->sendResponse(code:201);
+        return $this->sendResponse(message:'Your Account Has Been Created',code:201);
     }
 }
