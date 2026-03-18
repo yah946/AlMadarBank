@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use function PHPUnit\Framework\isEmpty;
 
-class BaseApiConroller extends Controller
+class BaseApiController extends Controller
 {
     public function sendResponse($result = null,$message='success',$code=200):JsonResponse {
         $response = [
