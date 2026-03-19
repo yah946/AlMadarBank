@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Desposit;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -13,6 +14,31 @@ class AccountController extends Controller
     public function index()
     {
         //
+    }
+
+    public function desposit(DespositRequest $request) {
+        $receiver_account_id = Account::where('rib',$request->rib)->first()->id;
+        Desposit::create([
+            'sender_id'=>auth()->id(),
+            'receiver_account_id' =>$receiver_account_id,
+            'amount'=>$request->amount,
+        ]);
+    }
+    public function withdraw(WithdrawRequest $request) {
+        Withdraw::create([
+            'user_id'=>auth()->id(),
+            'account_id' =>auth()->user()->account->id,
+            'amount'=>$request->amount,
+        ]);
+    }
+    public function transfers(TransferRequest $request) {
+        $receiver_account_id = Account::where('rib',$request->rib)->first()->id;
+        Transfer::create([
+            'sender_id'=>auth()->id(),
+            'sender_account_id' =>$receiver_account_id,
+            'receiver_account_id' =>$receiver_account_id,
+            'amount'=>$request->amount,
+        ]);
     }
 
     /**
