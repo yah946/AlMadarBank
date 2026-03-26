@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\API\BaseApiController;
+use App\Models\Account;
 use App\Models\Withdraw;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class WithdrawController extends Controller
+class WithdrawController extends BaseApiController
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +31,23 @@ class WithdrawController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required|integer|gt:0|exists:accounts,id',
+            'amount'=>'required|numeric|min:100',
+        ]);
+        DB::transaction(function()use($request){
+            $account = Account::findOrFail($request->id);
+            if($account->balance - $request->amount < 0){
+                return $this->sendError('you don\'t have enought mony to withdraw');
+            }
+            Withdraw::create([
+                'account_id' => $account->id,
+                'user_id' => auth()->id(),
+                'amount'=>$request->amount,
+            ]);
+            $account->decrement('balance',$request->amount);
+        });
+        return $this->sendResponse();
     }
 
     /**

@@ -23,7 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function(HttpException $exception,Request $request){
-            if($request->is('api/*')||$request->acceptJson()){
+            if($request->is('api/*')||$request->expectsJson()){
                 return (new BaseApiController())->sendError(
                     error:$exception->getMessage()??'error occurred',
                     code:$exception->getStatusCode()??500,

@@ -57,4 +57,8 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function accounts(){
+        return $this->belongsToMany(Account::class)->withPivot('role_id','accept_closure');
+    }
+
 }

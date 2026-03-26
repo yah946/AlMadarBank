@@ -9,4 +9,12 @@ class Desposit extends Model
 {
     /** @use HasFactory<\Database\Factories\DespositFactory> */
     use HasFactory;
+    protected $fillable = [
+        'receiver_account_id',
+        'sender_id',
+        'amount'
+    ];
+    public function account(){
+        return $this->belongsTo(Account::class);
+    }
 }

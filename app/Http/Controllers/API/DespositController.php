@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\API\BaseApiController;
+use App\Models\Account;
 use App\Models\Desposit;
+use App\Models\Withdraw;
+use DB;
 use Illuminate\Http\Request;
 
-class DespositController extends Controller
+class DespositController extends BaseApiController
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +32,20 @@ class DespositController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'rib'=>'required|string|size:24',
+            'amount'=>'required|numeric|min:50',
+        ]);
+        DB::transaction(function()use($request){
+            $account = Account::where('rib',$request->rib)->first();
+            Desposit::create([
+                'receiver_account_id' => $account->id,
+                'sender_id' => auth()->id(),
+                'amount'=>$request->amount,
+            ]);
+            $account->increment('balance',$request->amount);
+        });
+        return $this->sendResponse();
     }
 
     /**

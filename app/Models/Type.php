@@ -9,4 +9,7 @@ class Type extends Model
 {
     /** @use HasFactory<\Database\Factories\TypeFactory> */
     use HasFactory;
+    public function accounts(){
+        return $this->hasMany(Account::class);
+    }
 }

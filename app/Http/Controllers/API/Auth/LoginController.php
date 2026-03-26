@@ -19,6 +19,7 @@ class LoginController extends BaseApiController
     protected function respondWithToken($token)
     {
         return response()->json(data: [
+            'success'=>true,
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60

@@ -1,0 +1,56 @@
+[PerformanceTestV2] [DuckDBService] Using centralized DB path: /home/mjseh748/.config/Postman/duckdb/results.db
+[PerformanceTestV2] [DuckDBService] Created new singleton instance with global guard
+Could not get the lock, quitting
+The disableGPU setting is set to undefined
+Not disabling GPU
+Main: Starting cleanup of stale files
+Main: Error deleting lock file - /home/mjseh748/.config/Postman/storage/requester.json.lock [Error: ENOENT: no such file or directory, lstat '/home/mjseh748/.config/Postman/storage/requester.json.lock'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'lstat',
+  path: '/home/mjseh748/.config/Postman/storage/requester.json.lock'
+}
+Main: Error deleting lock file - /home/mjseh748/.config/Postman/storage/settings.json.lock [Error: ENOENT: no such file or directory, lstat '/home/mjseh748/.config/Postman/storage/settings.json.lock'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'lstat',
+  path: '/home/mjseh748/.config/Postman/storage/settings.json.lock'
+}
+Main: Error deleting lock file - /home/mjseh748/.config/Postman/storage/userPartitionData.json.lock [Error: ENOENT: no such file or directory, lstat '/home/mjseh748/.config/Postman/storage/userPartitionData.json.lock'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'lstat',
+  path: '/home/mjseh748/.config/Postman/storage/userPartitionData.json.lock'
+}
+Main: Error deleting lock file - /home/mjseh748/.config/Postman/storage/newAccountRegionSettings.json.lock [Error: ENOENT: no such file or directory, lstat '/home/mjseh748/.config/Postman/storage/newAccountRegionSettings.json.lock'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'lstat',
+  path: '/home/mjseh748/.config/Postman/storage/newAccountRegionSettings.json.lock'
+}
+Main: Cleanup of stale files completed
+Main~createDefaultWorkingDir - Default working dir creation already attempted
+1774348424927 main info "Booting Postman 12.1.4, linux-6.18.3+kali+1-amd64 on x64"
+1774348424929 main info "EventBus~initialize - Success"
+1774348424932 main info "Proxy configuration has not been setup"
+1774348424933 main info "CloudProxyManager~init - Success"
+1774348424939 main info "performShellDataMigration: Migration has already been done. Bailing out"
+1774348424948 main info "UpdateHandler~init - Success"
+1774348424950 main info "LeaderSelection: Initialized successfully"
+1774348424954 main info "main~onAppReady - Mock server IPC setup successful"
+1774348425032 main info "GPU detected VID 32902 DID 39497 ACTIVE true"
+1774348425254 main info "main.js: Agent started"
+1774348425255 main error "[payments] failed to enable sandbox mode",{"name":"Error","message":"app.enableSandbox() can only be called before app is ready","stack":"Error: app.enableSandbox() can only be called before app is ready\n    at initPaymentView (/opt/Postman/app/resources/app/main.js:942:121211)\n    at /opt/Postman/app/resources/app/main.js:21:31779"}
+1774348425255 main info "main.js: Payment view IPC handlers initialized"
+1774348425256 main info "shellController~init: Success"
+1774348425256 main info "shellMeta~init: Success"
+1774348425256 main info "partitionMigrationService: State of V7 partition:"
+1774348425256 main info "partitionMigrationService: V7 partitions",[]
+1774348425256 main info "partitionMigrationService~rectifyNamespaceOfScratchPadPartition: There is no partition with scratchpad namespace"
+1774348425256 main info "partitionMigrationService~rectifyNamespaceOfScratchPadPartition: There is no transit partition which could have been used for scratchpad"
+1774348425256 main info "partitionMigrationService~init: Success"
+1774348425257 main info "partitionMigrationService~runV8PartitionsIntegrity: Two way migration~ removing the following partitions from v8",[]
+1774348425258 main info "userPartitionService~getRecentV8UserPartition: recent v8 user context partition ","29f1fe72-cf03-4263-ae2b-7b2927e9dd9d"
+1774348425258 main info "userPartitionService~_rectifyTheActivePartitionOfApplication: Setting the active partition to ","29f1fe72-cf03-4263-ae2b-7b2927e9dd9d"
+1774348425267 main info "newAccountRegionPreferenceService~getPreferenceWithFallback - Preference not found in storage."
+1774348425267 main info "newAccountRegionPreferenceService~getToggleMenuTemplate - Using preference:","useUSRegion"
